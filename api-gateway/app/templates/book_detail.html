@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Chi tiết sách{% endblock %}
+
+{% block content %}
+<div style="max-width: 700px; margin: auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 30px;">
+    <h2 style="color: #667eea;">{{ book.title }}</h2>
+    <p><strong>Tác giả:</strong> {{ book.author }}</p>
+    <p><strong>Giá:</strong> {{ book.price|floatformat:0 }}đ</p>
+    <p><strong>Mô tả:</strong> {{ book.description }}</p>
+    <p><strong>Kho:</strong> {{ book.stock }} cuốn</p>
+    <hr>
+    <h3 style="color: #8B4513;">Đánh giá sách</h3>
+    <div>
+        {% if comments %}
+            {% for c in comments %}
+                <div style="border-bottom: 1px solid #eee; padding: 10px 0;">
+                    <span style="color: #ffb400;">
+                        {% for i in "12345"|slice:":c.star" %}★{% endfor %}
+                    </span>
+                    <span style="color: #666;">{{ c.content }}</span>
+                    <span style="float: right; color: #aaa; font-size: 0.9em;">{{ c.created_at|date:"d/m/Y H:i" }}</span>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color: #aaa;">Chưa có đánh giá nào.</p>
+        {% endif %}
+    </div>
+    <hr>
+    <h4 style="color: #667eea;">Viết đánh giá của bạn</h4>
+    <form method="post" action="{% url 'comment-add' book.id %}" style="margin-top: 15px;">
+        {% csrf_token %}
+        <textarea name="content" rows="3" style="width: 100%; border-radius: 5px; border: 1px solid #ddd; padding: 10px;" placeholder="Nội dung đánh giá..."></textarea>
+        <div style="margin: 10px 0;">
+            <label for="star">Chọn số sao:</label>
+            <select name="star" id="star" style="border-radius: 5px; border: 1px solid #ddd; padding: 5px;">
+                {% for i in "12345"|make_list %}
+                    <option value="{{ i }}">{{ i }} sao</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" style="background: #8B4513; color: white; border: none; border-radius: 5px; padding: 10px 20px; font-weight: bold;">Gửi đánh giá</button>
+    </form>
+</div>
+{% endblock %}

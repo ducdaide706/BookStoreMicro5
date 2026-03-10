@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Trang chủ - Bookstore{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 40px 0;">
+    <h2 style="color: #1a1a1a; font-size: 2em; margin-bottom: 20px;">
+        Chào mừng! 📖
+    </h2>
+    
+    <p style="font-size: 1.2em; color: #666; margin-bottom: 40px;">
+        Hệ thống quản lý nhà sách 
+    </p>
+    
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="{% url 'book_list' %}" style="
+            display: block;
+            padding: 30px 40px;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            📚 Xem sách
+        </a>
+        
+        <a href="{% url 'register_customer' %}" style="
+            display: block;
+            padding: 30px 40px;
+            background: #8B4513;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            ✍️ Đăng ký KH
+        </a>
+
+        <a href="{% url 'login_customer' %}" style="
+            display: block;
+            padding: 30px 40px;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            🔑 Đăng nhập
+        </a>
+        
+        
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Thanh toán - Bookstore{% endblock %}
+{% block content %}
+<div style="max-width: 500px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <h2 style="color: #8B4513; margin-bottom: 20px;">Chọn phương pháp thanh toán</h2>
+    <form method="post" action="{% url 'pay_order' %}">
+        <input type="hidden" name="order_id" value="{{ order_id }}">
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 10px;">
+                <input type="radio" name="pay_method_id" value="1" required>
+                <strong>Tiền mặt</strong> <span style="color: #666;">Thanh toán trực tiếp khi nhận hàng</span>
+            </label>
+            <label style="display: block; margin-bottom: 10px;">
+                <input type="radio" name="pay_method_id" value="2">
+                <strong>Mã QR</strong> <span style="color: #666;">Quét mã QR để thanh toán</span>
+            </label>
+            <label style="display: block; margin-bottom: 10px;">
+                <input type="radio" name="pay_method_id" value="3">
+                <strong>Thẻ tín dụng</strong> <span style="color: #666;">Thanh toán qua thẻ tín dụng</span>
+            </label>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label for="address"><strong>Địa chỉ nhận hàng:</strong></label>
+            <input type="text" name="address" id="address" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-top: 8px;">
+        </div>
+        <button type="submit" style="padding: 12px 30px; background: #8B4513; color: white; border: none; border-radius: 5px; font-size: 1.1em; font-weight: bold; cursor: pointer;">Thanh toán</button>
+    </form>
+</div>
+{% endblock %}

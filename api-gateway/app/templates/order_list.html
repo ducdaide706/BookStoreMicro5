@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Đơn hàng đã đặt - Bookstore{% endblock %}
+{% block content %}
+<div style="max-width: 800px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <h2 style="color: #8B4513; margin-bottom: 20px;">Đơn hàng đã đặt</h2>
+    {% if orders %}
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background: #1a1a1a; color: white;">
+                <th style="padding: 12px;">Mã đơn</th>
+                <th style="padding: 12px;">Ngày đặt</th>
+                <th style="padding: 12px;">Trạng thái</th>
+                <th style="padding: 12px;">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 12px;">{{ order.id }}</td>
+                <td style="padding: 12px;">{{ order.created_at }}</td>
+                <td style="padding: 12px;">{{ order.status }}</td>
+                <td style="padding: 12px;">
+                    <a href="{% url 'pay_order' %}?order_id={{ order.id }}" style="padding: 8px 20px; background: #228B22; color: white; border-radius: 5px; font-weight: bold; text-decoration: none;">Trả tiền</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div style="text-align: center; color: #666;">Bạn chưa có đơn hàng nào.</div>
+    {% endif %}
+</div>
+{% endblock %}

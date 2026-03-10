@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}Đăng ký khách hàng - Bookstore{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 0 auto;">
+    <h2 style="color: #1a1a1a; text-align: center; margin-bottom: 30px; font-size: 2em;">
+        ✍️ Đăng ký khách hàng
+    </h2>
+    
+    <form method="post" style="background: #ffffff; padding: 30px; border-radius: 10px; border: 1px solid #ddd;">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 20px;">
+            <label for="name" style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">
+                Họ và tên: <span style="color: red;">*</span>
+            </label>
+            <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required
+                placeholder="Nhập họ và tên"
+                style="
+                    width: 100%;
+                    padding: 12px;
+                    border: 2px solid #ddd;
+                    border-radius: 5px;
+                    font-size: 1em;
+                    transition: border-color 0.3s;
+                "
+                onfocus="this.style.borderColor='#1a1a1a'"
+                onblur="this.style.borderColor='#ddd'"
+            >
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label for="email" style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">
+                Email: <span style="color: red;">*</span>
+            </label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required
+                placeholder="example@email.com"
+                style="
+                    width: 100%;
+                    padding: 12px;
+                    border: 2px solid #ddd;
+                    border-radius: 5px;
+                    font-size: 1em;
+                    transition: border-color 0.3s;
+                "
+                onfocus="this.style.borderColor='#1a1a1a'"
+                onblur="this.style.borderColor='#ddd'"
+            >
+        </div>
+
+        <div style="margin-bottom: 25px;">
+            <label for="password" style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">
+                Mật khẩu: <span style="color: red;">*</span>
+            </label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                required
+                placeholder="Nhập mật khẩu"
+                style="
+                    width: 100%;
+                    padding: 12px;
+                    border: 2px solid #ddd;
+                    border-radius: 5px;
+                    font-size: 1em;
+                    transition: border-color 0.3s;
+                "
+                onfocus="this.style.borderColor='#1a1a1a'"
+                onblur="this.style.borderColor='#ddd'"
+            >
+        </div>
+        
+        <button 
+            type="submit"
+            style="
+                width: 100%;
+                padding: 15px;
+                background: #1a1a1a;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-size: 1.1em;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.2s;
+            "
+            onmouseover="this.style.transform='translateY(-2px)'; this.style.background='#8B4513';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.background='#1a1a1a';"
+        >
+            🚀 Đăng ký ngay
+        </button>
+    </form>
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{% url 'login_customer' %}" style="color: #8B4513; text-decoration: none; margin-top: 10px; display: inline-block; font-weight: bold;">
+            🔑 Đã có tài khoản? Đăng nhập
+        </a>
+    </div>
+</div>
+{% endblock %}
